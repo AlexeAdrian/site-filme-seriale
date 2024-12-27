@@ -1,7 +1,8 @@
-'use client';
+"use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Link from "next/link";
+import { Box, Typography, Card, CardMedia } from "@mui/material";
+import Link from 'next/link';
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -28,19 +29,30 @@ export default function Movies() {
     return <div>Loading...</div>;
   }
   return (
-    <div>
-      <h2>Popular Movies</h2>
-      <div className="movies-list">
+    <Box>
+      <Typography variant="h5" gutterBottom>
+        Popular Movies
+      </Typography>
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
         {movies.map((movie) => (
-          <div key={movie.id} className="movie-card">
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-            />
-            <h3>{movie.title}</h3>
-          </div>
+          <Link key={movie.id} href={`movie/${movie.id}`} passHref>
+            <Card sx={{ width: 200, cursor: "pointer" }}>
+              <CardMedia
+                component="img"
+                height="300"
+                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+              />
+              <Typography
+                variant="body2"
+                sx={{ textAlign: "center", padding: 1 }}
+              >
+                {movie.title}
+              </Typography>
+            </Card>
+          </Link>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
