@@ -4,25 +4,25 @@ import axios from "axios";
 import { Box, Typography, Card, CardMedia } from "@mui/material";
 import Link from 'next/link';
 
-export default function Movies() {
-  const [movies, setMovies] = useState([]);
+export default function Series() {
+  const [series, setSeries] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchMovies = async () => {
+  const fetchSeries = async () => {
     try {
       const response = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=771ef4f34ba0f808896ea9d73b270e5b"
+        "https://api.themoviedb.org/3/tv/popular?api_key=771ef4f34ba0f808896ea9d73b270e5b"
       );
-      setMovies(response.data.results);
+      setSeries(response.data.results);
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching movies: ", error);
+      console.error("Error fetching series: ", error);
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchMovies();
+    fetchSeries();
   }, []);
 
   if (loading) {
@@ -30,24 +30,24 @@ export default function Movies() {
   }
   return (
     <Box>
-      <Typography variant="h5" gutterBottom sx={{ mt: 1}}>
-        Popular Movies
+      <Typography variant="h5" gutterBottom>
+        Popular Series
       </Typography>
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
-        {movies.map((movie) => (
-          <Link key={movie.id} href={`movie/${movie.id}`} passHref>
+        {series.map((serie) => (
+          <Link key={serie.id} href={`series/${serie.id}`} passHref>
             <Card sx={{ width: 200, cursor: "pointer" }}>
               <CardMedia
                 component="img"
                 height="300"
-                image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
+                image={`https://image.tmdb.org/t/p/w500${serie.poster_path}`}
+                alt={serie.name}
               />
               <Typography
                 variant="body2"
                 sx={{ textAlign: "center", padding: 1 }}
               >
-                {movie.title}
+                {serie.name}
               </Typography>
             </Card>
           </Link>
