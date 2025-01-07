@@ -1,0 +1,29 @@
+[33mcommit c9d443ebf5215aeae1b891c87e8d6784559d8fff[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Alexe Adrian <alexeadrian199711@gmail.com>
+Date:   Sat Dec 28 14:57:55 2024 +0200
+
+    Adaugat componenta Series si rutare
+
+[33mcommit cd17afd1fbb82d0895dcf57cceede4cf94b5de43[m
+Author: Alexe Adrian <alexeadrian199711@gmail.com>
+Date:   Fri Dec 27 18:11:27 2024 +0200
+
+    Am adaugat schimbari in componenta Movies, si rutarea cu [id] catre fiecare element
+
+[33mcommit 021367416d7f52f557246b9127d3170809483cc0[m
+Author: Alexe Adrian <alexeadrian199711@gmail.com>
+Date:   Thu Dec 26 21:00:05 2024 +0200
+
+    Am adaugat componenta Footer si am folosit Movies din API
+
+[33mcommit 8a9a6406906369d6307a9adf1197e156be176d6e[m
+Author: Alexe Adrian <alexeadrian199711@gmail.com>
+Date:   Tue Dec 17 17:35:56 2024 +0200
+
+    Adaugat componenta Header si stilizare MUI
+
+[33mcommit d830779c77b1f923d37aabaed081156c1df869c6[m
+Author: Alexe Adrian <alexeadrian199711@gmail.com>
+Date:   Tue Dec 17 15:15:49 2024 +0200
+
+    Am adaugat dependintele cu npm install
