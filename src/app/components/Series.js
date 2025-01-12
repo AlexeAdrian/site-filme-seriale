@@ -28,15 +28,32 @@ export default function Series() {
   if (loading) {
     return <div>Loading...</div>;
   }
+  
   return (
-    <Box>
-      <Typography variant="h5" gutterBottom>
+    <Box sx={{ backgroundColor: "#1e293b", minHeight: "100vh", padding: "20px", color: "white"}}>
+      <Typography 
+        variant="h5" 
+        gutterBottom 
+        sx={{ 
+          mt: 1, 
+          fontFamily: "Lobster, cursive", 
+          ml: 13
+        }}
+      >
         Popular Series
       </Typography>
-      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center" }}>
         {series.map((serie) => (
           <Link key={serie.id} href={`series/${serie.id}`} passHref>
-            <Card sx={{ width: 200, cursor: "pointer" }}>
+            <Card 
+              sx={{ 
+                width: 200, 
+                cursor: "pointer", 
+                borderRadius: "15px",
+                overflow: "hidden",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)"
+              }}
+            >
               <CardMedia
                 component="img"
                 height="300"
@@ -45,7 +62,12 @@ export default function Series() {
               />
               <Typography
                 variant="body2"
-                sx={{ textAlign: "center", padding: 1 }}
+                sx={{ 
+                  textAlign: "center", 
+                  padding: 1, 
+                  backgroundColor: "#393E46",
+                  color: "#eeeeee"
+                }}
               >
                 {serie.name}
               </Typography>

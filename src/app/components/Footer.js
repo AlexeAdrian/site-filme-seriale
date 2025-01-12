@@ -10,7 +10,7 @@ export default function Header() {
       sx={{
         mt: "auto",
         width: "100%",
-        backgroundColor: "#244848",
+        backgroundColor: "#000010",
         color: "#F5F5DC",
       }}
     >

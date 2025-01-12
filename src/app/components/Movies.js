@@ -29,14 +29,35 @@ export default function Movies() {
     return <div>Loading...</div>;
   }
   return (
-    <Box>
-      <Typography variant="h5" gutterBottom sx={{ mt: 1}}>
+    <Box
+      sx={{
+        backgroundColor: "#1e293b",
+        minHeight: "100vh",
+        minWidth: "100vh",
+        padding: "20px",
+        color: "white",
+      }}
+    >
+      <Typography variant="h5" gutterBottom sx={{ mt: 1, fontFamily: "Lobster, cursive", ml: 13 }}>
         Popular Movies
       </Typography>
-      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center" }}>
         {movies.map((movie) => (
           <Link key={movie.id} href={`movie/${movie.id}`} passHref>
-            <Card sx={{ width: 200, cursor: "pointer" }}>
+            <Card
+              sx={{
+                width: 200,
+                cursor: "pointer",
+                borderRadius: "16px",
+                backgroundColor: "#374151",
+                color: "white",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow: "0 6px 12px rgba(0, 0, 0, 0.3)",
+                },
+              }}
+            >
               <CardMedia
                 component="img"
                 height="300"
