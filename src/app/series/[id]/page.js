@@ -90,7 +90,7 @@ export default function SeriesDetails() {
               height="400"
               src={`https://www.youtube.com/embed/${trailer}`}
               title="Trailer"
-              syyle= {{ border: none}}
+              style= {{ border: none}}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
