@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Box, Typography, Card, CardMedia } from "@mui/material";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -38,10 +38,21 @@ export default function Movies() {
         color: "white",
       }}
     >
-      <Typography variant="h5" gutterBottom sx={{ mt: 1, fontFamily: "Lobster, cursive", ml: 13 }}>
+      <Typography
+        variant="h5"
+        gutterBottom
+        sx={{ mt: 1, fontFamily: "Lobster, cursive", ml: 13 }}
+      >
         Popular Movies
       </Typography>
-      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 2,
+          justifyContent: "center",
+        }}
+      >
         {movies.map((movie) => (
           <Link key={movie.id} href={`movie/${movie.id}`} passHref>
             <Card

@@ -1,7 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { AppBar, Toolbar, Typography, TextField, Box, Button } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  TextField,
+  Box,
+  Button,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -65,17 +72,26 @@ export default function Header() {
           </Button>
         </Box>
         <Button sx={{ color: "#F5F5DC" }}>
-          <Link href="/about" style={{ textDecoration: "none", color: "#F5F5DC" }}>
+          <Link
+            href="/about"
+            style={{ textDecoration: "none", color: "#F5F5DC" }}
+          >
             About
           </Link>
         </Button>
         <Button sx={{ color: "#F5F5DC" }}>
-          <Link href="/movies" style={{ textDecoration: "none", color: "#F5F5DC" }}>
+          <Link
+            href="/movies"
+            style={{ textDecoration: "none", color: "#F5F5DC" }}
+          >
             Movies
           </Link>
         </Button>
         <Button sx={{ color: "#F5F5DC" }}>
-          <Link href="/series" style={{ textDecoration: "none", color: "#F5F5DC" }}>
+          <Link
+            href="/series"
+            style={{ textDecoration: "none", color: "#F5F5DC" }}
+          >
             Series
           </Link>
         </Button>
