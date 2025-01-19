@@ -50,9 +50,6 @@ export default function Header() {
             sx={{
               marginRight: "8px",
               width: "200px",
-              "& .MuiInput-underline:before": {
-                borderBottomColor: "transparent",
-              },
             }}
           />
           <Button
