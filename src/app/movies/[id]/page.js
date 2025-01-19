@@ -144,6 +144,7 @@ export default function MovieDetails() {
                       padding: 1,
                       backgroundColor: "#393E46",
                       color: "#eeeeee",
+                      height: "50px",
                     }}
                   >
                     {similarMovie.title}

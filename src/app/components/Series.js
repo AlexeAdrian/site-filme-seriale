@@ -81,6 +81,7 @@ export default function Series() {
                   padding: 1,
                   backgroundColor: "#393E46",
                   color: "#eeeeee",
+                  height: "50px",
                 }}
               >
                 {serie.name}

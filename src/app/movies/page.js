@@ -110,7 +110,7 @@ export default function Movies() {
         }}
       >
         {movies.slice(0, 20).map((movie) => (
-          <Link key={movie.id} href={`/movie/${movie.id}`} passHref>
+          <Link key={movie.id} href={`/movies/${movie.id}`} passHref>
             <Card
               sx={{
                 width: 200,
@@ -137,6 +137,7 @@ export default function Movies() {
                   textAlign: "center",
                   padding: 1,
                   color: "#F5F5DC",
+                  height: "50px",
                 }}
               >
                 {movie.title}

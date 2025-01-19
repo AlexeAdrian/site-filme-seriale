@@ -54,7 +54,7 @@ export default function Movies() {
         }}
       >
         {movies.map((movie) => (
-          <Link key={movie.id} href={`movie/${movie.id}`} passHref>
+          <Link key={movie.id} href={`movies/${movie.id}`} passHref>
             <Card
               sx={{
                 width: 200,
@@ -77,7 +77,7 @@ export default function Movies() {
               />
               <Typography
                 variant="body2"
-                sx={{ textAlign: "center", padding: 1 }}
+                sx={{ textAlign: "center", padding: 1, height: "50px"}}
               >
                 {movie.title}
               </Typography>

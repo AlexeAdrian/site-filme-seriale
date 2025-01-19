@@ -107,7 +107,7 @@ export default function Series() {
         }}
       >
         {series.slice(0, 20).map((serie) => (
-          <Link key={serie.id} href={`/serie/${serie.id}`} passHref>
+          <Link key={serie.id} href={`/series/${serie.id}`} passHref>
             <Card
               sx={{
                 width: 200,
@@ -134,6 +134,7 @@ export default function Series() {
                   textAlign: "center",
                   padding: 1,
                   color: "#F5F5DC",
+                  height: "50px",
                 }}
               >
                 {serie.name}
