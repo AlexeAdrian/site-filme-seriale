@@ -38,7 +38,7 @@ export default function SearchPage() {
       } catch (error) {
         console.error("Failed to fetch search results", error);
         setLoading(false);
-      }
+      } 
     };
 
     fetchResults();
@@ -56,7 +56,7 @@ export default function SearchPage() {
       if (newQuery) {
         router.push(`/search?query=${newQuery}&type=${type}`);
       }
-    }, 1000);
+    }, 10000);
   };
 
   if (loading) {
@@ -101,9 +101,6 @@ export default function SearchPage() {
           sx={{
             backgroundColor: "#fff",
             borderRadius: "8px",
-            "& .MuiInputBase-root": {
-              backgroundColor: "#fff",
-            },
             marginBottom: "16px",
           }}
         />

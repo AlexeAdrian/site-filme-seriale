@@ -68,16 +68,13 @@ export default function Movies() {
       <Box sx={{ marginBottom: "20px", textAlign: "left" }}>
         <FormControl variant="filled" sx={{ minWidth: 200 }}>
           <InputLabel>Choose Genre</InputLabel>
-          <Select
+          <Select 
             value={selectedGenre}
             onChange={(e) => setSelectedGenre(e.target.value)}
             label="Choose Genre"
             sx={{
               backgroundColor: "#374151",
               color: "white",
-              "& .MuiSelect-icon": {
-                color: "white",
-              },
             }}
           >
             {genres.map((genre) => (
@@ -99,7 +96,7 @@ export default function Movies() {
         }}
       >
         {genres.find((genre) => genre.id === selectedGenre)?.name} Movies
-      </Typography>
+      </Typography> 
 
       <Box
         sx={{
