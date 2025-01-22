@@ -107,7 +107,7 @@ export default function MovieDetails() {
 
         {trailer && (
           <Box sx={{ marginTop: 3, textAlign: "center" }}>
-            <Typography variant="h6">Trailer:</Typography>
+            <Typography variant="h6">Trailer:</Typography>  
             <iframe
               width="100%"
               height="400"

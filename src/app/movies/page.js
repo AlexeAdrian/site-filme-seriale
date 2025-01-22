@@ -56,6 +56,7 @@ export default function Movies() {
     return <div>Loading...</div>;
   }
 
+  // casuta de selectare pentru genul filmului
   return (
     <Box
       sx={{

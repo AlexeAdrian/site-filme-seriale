@@ -25,7 +25,8 @@ export default function SearchPage() {
   const debounceTimeout = useRef(null);
 
   useEffect(() => {
-    if (!searchQuery) return;
+    const debounceSearch = setTimeout(() => {
+      if (searchQuery.trim() === "") return;
 
     const fetchResults = async () => {
       try {
@@ -38,25 +39,23 @@ export default function SearchPage() {
       } catch (error) {
         console.error("Failed to fetch search results", error);
         setLoading(false);
-      } 
+      }
     };
 
     fetchResults();
-  }, [searchQuery, type]);
+  }, 500);
+
+  return () => clearTimeout(debounceSearch); 
+}, [searchQuery, type]);
 
   const handleSearchChange = (event) => {
     const newQuery = event.target.value;
     setSearchQuery(newQuery);
-
-    if (debounceTimeout.current) {
-      clearTimeout(debounceTimeout.current);
-    }
-
-    debounceTimeout.current = setTimeout(() => {
+    if (event.key === "Enter") {
       if (newQuery) {
         router.push(`/search?query=${newQuery}&type=${type}`);
       }
-    }, 10000);
+    }
   };
 
   if (loading) {
@@ -81,7 +80,7 @@ export default function SearchPage() {
       </Typography>
     );
   }
-
+  // bara de cautare
   return (
     <Box
       sx={{
@@ -123,7 +122,7 @@ export default function SearchPage() {
         }}
       >
         {results.map((result) => (
-          <Link key={result.id} href={`${type}/${result.id}`} passHref>
+          <Link key={result.id} href={`movies/${result.id}`} passHref>
             <Card
               sx={{
                 width: 200,
