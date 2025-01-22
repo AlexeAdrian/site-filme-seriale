@@ -9,6 +9,7 @@ import {
   CardMedia,
   CircularProgress,
 } from "@mui/material";
+import Link from "next/link";
 
 export default function SeriesDetails() {
   const { id } = useParams();
@@ -133,6 +134,7 @@ export default function SeriesDetails() {
             </Typography>
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
               {similarSeries.map((similarSerie) => (
+                <Link key={similarSerie} href={`/series/${similarSerie.id}`} passHref>
                 <Card
                   key={similarSerie.id}
                   sx={{ width: 200, cursor: "pointer", borderRadius: "15px" }}
@@ -155,6 +157,7 @@ export default function SeriesDetails() {
                     {similarSerie.name}
                   </Typography>
                 </Card>
+                </Link>
               ))}
             </Box>
           </Box>

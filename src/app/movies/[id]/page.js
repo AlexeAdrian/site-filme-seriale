@@ -9,6 +9,7 @@ import {
   CardMedia,
   CircularProgress,
 } from "@mui/material";
+import Link from "next/link";
 
 export default function MovieDetails() {
   const { id } = useParams();
@@ -127,6 +128,7 @@ export default function MovieDetails() {
             </Typography>
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
               {similarMovies.map((similarMovie) => (
+                <Link key={similarMovie.id} href={`/movies/${similarMovie.id}`} passHref>
                 <Card
                   key={similarMovie.id}
                   sx={{ width: 200, cursor: "pointer", borderRadius: "15px" }}
@@ -150,6 +152,7 @@ export default function MovieDetails() {
                     {similarMovie.title}
                   </Typography>
                 </Card>
+                </Link>
               ))}
             </Box>
           </Box>
