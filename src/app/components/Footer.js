@@ -3,7 +3,7 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, Box } from "@mui/material";
 
-export default function Header() {
+export default function Footer() {
   return (
     <Box
       component="footer"

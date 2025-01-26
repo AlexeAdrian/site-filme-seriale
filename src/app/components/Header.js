@@ -50,8 +50,18 @@ export default function Header() {
             sx={{
               marginRight: "8px",
               width: "200px",
+              "& .MuiInput-underline:before": {
+                borderBottom: "none",
+              },
+              "& .MuiInput-underline:after": {
+                borderBottom: "none",
+              },
+              "&:hover .MuiInput-underline:before": {
+                borderBottom: "none",
+              },
             }}
           />
+
           <Button
             type="submit"
             variant="contained"

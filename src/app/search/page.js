@@ -43,7 +43,7 @@ export default function SearchPage() {
     };
 
     fetchResults();
-  }, 500);
+  }, 1000);
 
   return () => clearTimeout(debounceSearch); 
 }, [searchQuery, type]);
@@ -150,6 +150,7 @@ export default function SearchPage() {
                   variant="body2"
                   sx={{
                     textAlign: "center",
+                    height: "50px",
                     padding: 1,
                     fontSize: "0.875rem",
                     fontWeight: "bold",
