@@ -43,7 +43,7 @@ export default function SearchPage() {
     };
 
     fetchResults();
-  }, 1000);
+  }, 10000);
 
   return () => clearTimeout(debounceSearch); 
 }, [searchQuery, type]);
@@ -90,10 +90,10 @@ export default function SearchPage() {
         color: "white",
       }}
     >
-      <Box sx={{ marginBottom: 4 }}>
+      <Box sx={{ marginBottom: 1 }}>
         <TextField
           label="Search for a movie or series"
-          variant="outlined"
+          variant="standard"
           fullWidth
           value={searchQuery}
           onChange={handleSearchChange}
