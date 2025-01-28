@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import axios from "axios";
 import {
@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams();
   const query = searchParams.get("query") || "";
   const type = searchParams.get("type") || "movie";
@@ -25,8 +25,14 @@ export default function SearchPage() {
   const debounceTimeout = useRef(null);
 
   useEffect(() => {
-    const debounceSearch = setTimeout(() => {
-      if (searchQuery.trim() === "") return;
+    if (searchQuery.trim() === "") return;
+
+    const cachedResults = sessionStorage.getItem(searchQuery);
+    if (cachedResults) {
+      setResults(JSON.parse(cachedResults));
+      setLoading(false);
+      return;
+    }
 
     const fetchResults = async () => {
       try {
@@ -35,6 +41,7 @@ export default function SearchPage() {
           `https://api.themoviedb.org/3/search/${type}?api_key=771ef4f34ba0f808896ea9d73b270e5b&query=${searchQuery}`
         );
         setResults(response.data.results);
+        sessionStorage.setItem(searchQuery, JSON.stringify(response.data.results));
         setLoading(false);
       } catch (error) {
         console.error("Failed to fetch search results", error);
@@ -42,19 +49,23 @@ export default function SearchPage() {
       }
     };
 
-    fetchResults();
-  }, 10000);
+    if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
 
-  return () => clearTimeout(debounceSearch); 
-}, [searchQuery, type]);
+    debounceTimeout.current = setTimeout(() => {
+      fetchResults();
+    }, 1500);
+
+    return () => clearTimeout(debounceTimeout.current);
+  }, [searchQuery, type]);
 
   const handleSearchChange = (event) => {
-    const newQuery = event.target.value;
-    setSearchQuery(newQuery);
-    if (event.key === "Enter") {
-      if (newQuery) {
-        router.push(`/search?query=${newQuery}&type=${type}`);
-      }
+    setSearchQuery(event.target.value);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" && searchQuery.trim()) {
+      router.push(`/search?query=${searchQuery}&type=${type}`);
+      sessionStorage.removeItem(searchQuery);
     }
   };
 
@@ -80,7 +91,7 @@ export default function SearchPage() {
       </Typography>
     );
   }
-  // bara de cautare
+
   return (
     <Box
       sx={{
@@ -97,6 +108,7 @@ export default function SearchPage() {
           fullWidth
           value={searchQuery}
           onChange={handleSearchChange}
+          onKeyDown={handleKeyDown}
           sx={{
             backgroundColor: "#fff",
             borderRadius: "8px",
@@ -165,5 +177,13 @@ export default function SearchPage() {
         ))}
       </Box>
     </Box>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<CircularProgress />}>
+      <SearchContent />
+    </Suspense>
   );
 }
